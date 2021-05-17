@@ -5,6 +5,7 @@
 		"store" => "Geschäft",
 		"cart" => "Warenkorb",
 		"bill" => "Fakturierung",
+		"profile" => "Profil",
 
 		//header
 		"products" => "Produkte",
@@ -16,6 +17,40 @@
 		"login" => "Einloggen",
 		"reg" => "Registrieren",
 		"about" => "Über uns",
+
+		//feedback.php
+		"feed" => "Rückmeldungen",
+
+		//about us
+		"rate" => "Bewerten Sie unsere Website!",
+		"15" => "Bewerten Sie es von 1 bis 5!",
+		"youropinion" => "Deine Meinung...",
+		"ratebtn" => "Auswertung",
+		"sumrate" => "Alle Bewertungen:",
+		"avrate" => "Durchschnittliche Bewertung:",
+		"othersreview" => "Bewertungen von anderen:",
+		"ratestar" => "Bewertung (Sterne)",
+		"feedback" => "Meinung",
+		"rate2" => "Auswertung.",
+
+		//messages.php
+		"msgs" => "Mitteilungen",
+		"sender" => "Absender",
+		"msg" => "Mitteilung",
+		"date" => "Datum",
+
+
+		//deleteProducts.php
+		"delprod" => "Produkte löschen",
+
+		//addProduct.php
+		"addprod" => "Produkt hinzufügen",
+		"upload" => "hochladen",
+
+		//adminProfile.php
+		"logged" => "Sie haben sich als Administrator angemeldet",
+
+		"deluser" => "Benutzer löschen",
 
 		//payment.php
 		"ordernum" => "Bestellnummer: ",

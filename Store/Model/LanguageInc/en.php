@@ -5,6 +5,7 @@
 		"store" => "Store",
 		"cart" => "Cart",
 		"bill" => "Invoicing",
+		"profile" => "Profile",
 
 		//header
 		"products" => "Products",
@@ -16,6 +17,39 @@
 		"login" => "Login",
 		"reg" => "Registration",
 		"about" => "About us",
+
+		//feedback.php
+		"feed" => "Feedbacks",
+
+		//about us
+		"rate" => "Rate our webpage!",
+		"15" => "Rate it from 1 to 5!",
+		"youropinion" => "Your opinoin...",
+		"ratebtn" => "Rate",
+		"sumrate" => "All ratings:",
+		"avrate" => "Average ratings:",
+		"othersreview" => "Reviews by others:",
+		"ratestar" => "Rates (stars)",
+		"feedback" => "Feedback",
+		"rate2" => "rates.",
+
+		//messages.php
+		"msgs" => "Messages",
+		"sender" => "Sender",
+		"msg" => "Message",
+		"date" => "Date",
+
+		//deleteProducts.php
+		"delprod" => "Delete products",
+
+		//addProduct.php
+		"addprod" => "Add product",
+		"upload" => "Upload",
+
+		//adminProfile.php
+		"logged" => "You logged in as Admin",
+
+		"deluser" => "Delete users",
 
 		//settings.php
 		"ppass" => "Password...",

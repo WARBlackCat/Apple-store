@@ -128,6 +128,10 @@ select {
     			<input type="password" class="form-control" name="confpass" id="p2" placeholder="<?php echo $lang['cpass']?>" />
   			</div>
   			<p id="text"><?php echo $lang['alert']?></p>
+
+  			<!--
+				https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_detect_capslock
+  			-->
 			<script>
 				var input = document.getElementById("p1");
 				var text = document.getElementById("text");

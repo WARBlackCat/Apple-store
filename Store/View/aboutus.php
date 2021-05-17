@@ -9,7 +9,7 @@
 	<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-	<title><?php echo $lang['about']?></title>
+	<title><?php echo $lang['ratebtn']?></title>
 <style type="text/css">
 .content {
 	position: relative;
@@ -92,6 +92,9 @@ select {
 	color: #2a2a2a;
 	height: 30px;
 }
+hr {
+	width: 300px;
+}
 </style>
 </head>
 <body>
@@ -109,7 +112,93 @@ select {
 			</span>
 	</div>
 	<div class="content">
-		
+		<h5><?php echo $lang['rate']?></h5>
+			<hr>
+		<form action="" method="POST">
+			<?php echo $lang['15']?>
+			<select class="sel" name="rate" id="rate" onchange="fetch_select(this.value);">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select><br><br>
+			<textarea name="feedback" cols="60" rows="8" placeholder="<?php echo $lang['youropinion']?>"></textarea><br>
+			<input type="submit" name="sbmt" class="btn btn2" value="<?php echo $lang['ratebtn']?>" />
+		</form><br><br>
+		<?php 
+
+			if (isset($_POST['sbmt'])) {
+				$rate = $_POST['rate'];
+				$feedback = $_POST['feedback'];
+				$date = date("Y-m-d H:i");
+
+				$query = "INSERT INTO feedback (Rate, Opinion, CDate) VALUES('$rate', '$feedback', '$date')";
+				$result = mysqli_query($conn, $query);
+
+				if ($result) {
+					echo "<script>alert('Köszönjük a visszajelzését!')</script>";
+				}
+			}
+		?>
+		<?php 
+
+			$qry="SELECT SUM(Rate) AS sum FROM feedback";
+			$res = mysqli_query($conn,$qry);
+
+			$qry2="SELECT COUNT(Rate) AS count FROM feedback";
+			$res2 = mysqli_query($conn,$qry2);
+	
+			while ($row = mysqli_fetch_assoc($res)) {
+				$s = $row['sum'];
+			}
+
+			while ($row = mysqli_fetch_assoc($res2)) {
+				$c = $row['count'];
+			}
+		?>
+		<?php echo $lang['sumrate']?> <?php echo $c; ?> <?php echo $lang['rate2']?><br>
+		<?php echo $lang['avrate']?> <?php echo $s/$c; ?><br><br><br>
+		<h5><?php echo $lang['othersreview']?></h5>
+			<hr>
+		<table>
+		<thead>
+			<tr>
+				<td>
+					<h4><?php echo $lang['ratestar']?> &nbsp;&nbsp;&nbsp;&nbsp;</h4>
+				</td>
+				<td>
+					<h4>&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $lang['feedback']?> &nbsp;&nbsp;&nbsp;&nbsp;</h4>
+				</td>
+				<td>
+					<h4>&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $lang['date']?></h4>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+
+	<?php 
+		$qry3="SELECT * FROM feedback";
+    	$res3=mysqli_query($conn,$qry3);
+
+    	while ($row=mysqli_fetch_array($res3)) {
+    		 echo "<tr>";
+          echo "<td>";
+          echo "<p align=center><h6 align=center>".$row['Rate']."</h6></p>";
+          echo "</td>";
+          echo "<td>";
+          echo "<p align=center><h6 align=center>".$row['Opinion']."</h6></p>";
+          echo "</td>";
+          echo "<td>";
+          echo "<p align=center><h6 align=center>".$row['CDate']."</h6></p>";
+          echo "</td>";
+
+    	}
+
+	 ?>
+
+</tbody>
+</table>
 	</div>
 </body>
 </html>

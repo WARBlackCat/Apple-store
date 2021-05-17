@@ -5,6 +5,7 @@
 		"store" => "Áruház",
 		"cart" => "Kosár",
 		"bill" => "Számlázás",
+		"profile" => "Profil",
 
 		//header
 		"products" => "Termékek",
@@ -16,6 +17,40 @@
 		"login" => "Belépés",
 		"reg" => "Regisztráció",
 		"about" => "Rólunk",
+
+		//feedback.php
+		"feed" => "Visszajelzések",
+
+		//about us
+		"rate" => "Értékelje weblapunkat!",
+		"15" => "Értékelje 1-től 5-ig!",
+		"youropinion" => "Véleménye...",
+		"ratebtn" => "Értékelés",
+		"sumrate" => "Összes értékelés:",
+		"avrate" => "Átlagos értékelés:",
+		"othersreview" => "Mások értékelései:",
+		"ratestar" => "Értékelés (Csillag)",
+		"feedback" => "Vélemény",
+		"rate2" => "értékelés.",
+
+		//messages.php
+		"msgs" => "Üzenetek",
+		"sender" => "Küldő",
+		"msg" => "Üzenet",
+		"date" => "Dátum",
+
+		//deleteProducts.php
+		"delprod" => "Termékek törlése",
+
+		//addProduct.php
+		"addprod" => "Termék hozzáadása",
+		"upload" => "Feltöltés",
+
+		//adminProfile.php
+		"logged" => "Ön adminisztrátorként jelentkezett be",
+
+		//deleteUsers.php
+		"deluser" => "Felhasználók törlése",
 
 		//settings.php
 		"ppass" => "Jelszó...",

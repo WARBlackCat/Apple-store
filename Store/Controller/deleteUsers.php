@@ -14,7 +14,7 @@
 	<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-	<title><?php echo $lang['profile']?></title>
+	<title><?php echo $lang['deluser']?></title>
 <style type="text/css">
 .content {
 	position: relative;
@@ -23,7 +23,9 @@
 	margin-left: auto;
 	margin-bottom: 50px;
 	margin-right: auto;
-	border: 2px solid #2a2a2a;
+	border-bottom: 2px solid #2a2a2a;
+	border-right: 2px solid #2a2a2a;
+	border-left: 2px solid #2a2a2a;
 	border-radius: 0px 0px 10px 10px;
 	width: 775px;
 	padding: 30px 20px 30px;
@@ -40,9 +42,7 @@
 	margin-bottom: auto;
 	margin-right: auto;
 	height: 110px;
-	border-top: 2px solid #2a2a2a;
-	border-right: 2px solid #2a2a2a;
-	border-left: 2px solid #2a2a2a;
+	border: 2px solid #2a2a2a;
 	border-radius: 10px 10px 0px 0px;
 	width: 775px;
 	padding: 12px 20px 20px;
@@ -51,10 +51,6 @@
 	float: right;
 	background-color: #ababab;
 	margin-right: 7.5px;
-}
-.btn4 {
-	background-color: #ababab;
-	float: left;
 }
 h3 {
 	text-decoration: underline;
@@ -89,6 +85,42 @@ body {
 	margin-right: 7.5px;
 	margin-top: 5px;
 }
+.center {
+	text-align: center;
+}
+table {
+	border: 1px solid black;
+}
+th {
+	padding: 15px;
+	text-align: center;
+	font-weight: bold;
+	border: 1px solid black;
+}
+td {
+	padding: 15px;
+	text-align: center;
+	font-style: italic;	
+	border: 1px solid black;
+	border-bottom: 1.5px solid black;
+}
+thead tr {
+	border: 2px solid black;
+	background: #ababab;
+}
+tr {
+	border: 1px solid black;
+}
+tbody tr:nth-child(odd) {
+    background-color: #e4e4e4;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #d4d4d4;
+}
+.red {
+	color: red;
+}
 .sel select {
   display: none; 
 }
@@ -101,6 +133,12 @@ option {
 select {
 	color: #2a2a2a;
 	height: 30px;
+}
+.hidden {
+	display: none;
+}
+p {
+	text-align: justify;
 }
 .top {
 	margin-top: 10px;
@@ -118,15 +156,65 @@ select {
 		<a href="../Controller/feedback.php"><button class="btn btn3"><?php echo $lang['feed']?></button></a>
 		<select class="sel top2" onchange="location = this.value;">
 					<option><?php echo $lang['chooselang']?></option>>
-					<option value="../Controller/addProduct.php?lang=hu"><?php echo $lang['hun']?></option>
-					<option value="../Controller/addProduct.php?lang=en"><?php echo $lang['eng']?></option>
-					<option value="../Controller/addProduct.php?lang=de"><?php echo $lang['ger']?></option>
+					<option value="../Controller/deleteUsers.php?lang=hu"><?php echo $lang['hun']?></option>
+					<option value="../Controller/deleteUsers.php?lang=en"><?php echo $lang['eng']?></option>
+					<option value="../Controller/deleteUsers.php?lang=de"><?php echo $lang['ger']?></option>
 				</select><br>
 		<a href="../Controller/addProduct.php"><button class="btn btn3 top"><?php echo $lang['addprod']?></button></a>
 		<a href="../Controller/deleteProducts.php"><button class="btn btn3 top"><?php echo $lang['delprod']?></button></a>		
+	</div>	<div class="content">
+		<h4><?php echo $lang['deluser']?></h4>
+		<table>
+			<thead>
+				<tr>
+					<td>
+						<?php echo $lang['name']?>
+					</td>
+					<td>
+						<?php echo $lang['email']?>
+					</td>
+					<td>
+						<?php echo $lang['del']?>
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<?php 
+
+					$query="SELECT * FROM users";
+    				$result=mysqli_query($conn,$query);
+   						while ($row=mysqli_fetch_array($result)) {
+   							$user = $row['UserName'];
+   							echo '<form action="" method="POST"';
+   							echo "<tr>";
+   							echo "<td>";
+   							echo $row['UserName'];
+   							echo "</td>";
+   							echo "<td>";
+   							echo $row['UserEmail'];
+   							echo "</td>";
+   							echo "<td>";
+   							echo '<input class="btn btn2" type = "submit" name="sbmt" value="'.$lang["del"].'" />';
+   							echo "</td>";
+   							echo "</form>";
+   							echo "</tr>";
+   						}
+   						if (!$result) {
+   							echo "<h3>Nincs egyetlen regisztrált felhasználó sem!</h3>";
+   						}
+				?>
+			</tbody>
+		</table>
 	</div>
-	<div class="content">
-		<h5><?php echo $lang['logged']?></h5>
-	</div>
+	<?php 
+
+	if (isset($_POST['sbmt'])) {
+		$qry="DELETE FROM users WHERE UserName='$user'";
+		mysqli_query($conn,$qry);
+		echo "<script>confirm('Biztos, hogy törli a(z) ".$user." nevű felhasználót?')</script>";
+		echo '<script>window.location="../Controller/deleteUsers.php"</script>';
+	}
+
+	 ?>
 </body>
 </html>

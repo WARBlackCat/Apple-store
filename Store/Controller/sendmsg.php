@@ -167,8 +167,9 @@ img {
 				$username = $_POST['name'];
 				$email = $_POST['email'];
 				$msg = $_POST['msg'];
+				$date = date("Y-m-d H:i");
 
-				$query = "INSERT INTO message (Sender, Email, Msg) VALUES ('$username', '$email', '$msg')";
+				$query = "INSERT INTO message (Sender, Email, Msg, CDate) VALUES ('$username', '$email', '$msg', '$date')";
 				mysqli_query($conn, $query);
 
 				echo "<script>alert('Üzenet sikeresen elküldve!')</script>";
