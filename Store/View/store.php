@@ -215,10 +215,13 @@ img {
 			</tr>
 			<tr>
 				<td>
-					<a href="">tab1</a>
+					<a href="#air">iPad Air</a>
 				</td>
 				<td>
-					<a href="">tab2</a>
+					<a href="#pro">iPad Pro</a>
+				</td>
+				<td>
+					<a href="#mini">iPad Mini</a>
 				</td>
 			</tr>
 		</table>
@@ -520,6 +523,171 @@ img {
 					<?php
 
 						$query = "SELECT * FROM products WHERE name LIKE '%iPhone 11%'";
+						$result = mysqli_query($conn, $query);
+							if(mysqli_num_rows($result) > 0) {
+								while($row = mysqli_fetch_array($result)) {
+					?>
+					<form action="../View/store.php?action=add&id=<?php echo $row["ID"]; ?>" method="POST">
+						<tr>
+							<td>
+								<a target="_blank" href="../Model/Images/<?php echo $row["Image"]; ?>"><img onmouseover="opImg(this)" onmouseout="Img(this)" src="../Model/Images/<?php echo $row["Image"]; ?>" /></a>
+							</td>
+							<td>
+								<p><?php echo $row["Name"]; ?></p>
+							</td>
+							<td>
+								<p><?php echo $row["Price"]; ?> HUF</p>
+							</td>
+							<td>
+								<input type="number" name="quantity" value="1" maxlength="1" max="9" min="1" />
+							</td>
+								<input type="hidden" name="hidden_name" value="<?php echo $row["Name"]; ?>" />
+								<input type="hidden" name="hidden_price" value="<?php echo $row["Price"]; ?>" />
+							<td>
+								<input type="submit" name="add" class="btn btn-default" value="<?php echo $lang['addtocart']?>" />
+							</td>
+						</tr>
+					</form>
+			
+					<?php
+								}
+							}
+					?>
+					</tbody>
+				</table>
+				<br><br>
+				<h4><a name="air">iPad Air</a></h4>
+				<table class="tab">
+					<thead>
+						<tr>
+							<th>
+								<?php echo $lang['image']?>
+							</th>
+							<th>
+								Modell
+							</th>
+							<th>
+								<?php echo $lang['price']?>
+							</th>
+							<th colspan="2">
+								<?php echo $lang['qty']?>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+
+						$query = "SELECT * FROM products WHERE name LIKE '%iPad Air%'";
+						$result = mysqli_query($conn, $query);
+							if(mysqli_num_rows($result) > 0) {
+								while($row = mysqli_fetch_array($result)) {
+					?>
+					<form action="../View/store.php?action=add&id=<?php echo $row["ID"]; ?>" method="POST">
+						<tr>
+							<td>
+								<a target="_blank" href="../Model/Images/<?php echo $row["Image"]; ?>"><img onmouseover="opImg(this)" onmouseout="Img(this)" src="../Model/Images/<?php echo $row["Image"]; ?>" /></a>
+							</td>
+							<td>
+								<p><?php echo $row["Name"]; ?></p>
+							</td>
+							<td>
+								<p><?php echo $row["Price"]; ?> HUF</p>
+							</td>
+							<td>
+								<input type="number" name="quantity" value="1" maxlength="1" max="9" min="1" />
+							</td>
+								<input type="hidden" name="hidden_name" value="<?php echo $row["Name"]; ?>" />
+								<input type="hidden" name="hidden_price" value="<?php echo $row["Price"]; ?>" />
+							<td>
+								<input type="submit" name="add" class="btn btn-default" value="<?php echo $lang['addtocart']?>" />
+							</td>
+						</tr>
+					</form>
+			
+					<?php
+								}
+							}
+					?>
+					</tbody>
+				</table>
+				<br><br>
+				<h4><a name="pro">iPad Pro</a></h4>
+				<table class="tab">
+					<thead>
+						<tr>
+							<th>
+								<?php echo $lang['image']?>
+							</th>
+							<th>
+								Modell
+							</th>
+							<th>
+								<?php echo $lang['price']?>
+							</th>
+							<th colspan="2">
+								<?php echo $lang['qty']?>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+
+						$query = "SELECT * FROM products WHERE name LIKE '%iPad Pro%'";
+						$result = mysqli_query($conn, $query);
+							if(mysqli_num_rows($result) > 0) {
+								while($row = mysqli_fetch_array($result)) {
+					?>
+					<form action="../View/store.php?action=add&id=<?php echo $row["ID"]; ?>" method="POST">
+						<tr>
+							<td>
+								<a target="_blank" href="../Model/Images/<?php echo $row["Image"]; ?>"><img onmouseover="opImg(this)" onmouseout="Img(this)" src="../Model/Images/<?php echo $row["Image"]; ?>" /></a>
+							</td>
+							<td>
+								<p><?php echo $row["Name"]; ?></p>
+							</td>
+							<td>
+								<p><?php echo $row["Price"]; ?> HUF</p>
+							</td>
+							<td>
+								<input type="number" name="quantity" value="1" maxlength="1" max="9" min="1" />
+							</td>
+								<input type="hidden" name="hidden_name" value="<?php echo $row["Name"]; ?>" />
+								<input type="hidden" name="hidden_price" value="<?php echo $row["Price"]; ?>" />
+							<td>
+								<input type="submit" name="add" class="btn btn-default" value="<?php echo $lang['addtocart']?>" />
+							</td>
+						</tr>
+					</form>
+			
+					<?php
+								}
+							}
+					?>
+					</tbody>
+				</table>
+				<br><br>
+				<h4><a name="mini">iPad Mini</a></h4>
+				<table class="tab">
+					<thead>
+						<tr>
+							<th>
+								<?php echo $lang['image']?>
+							</th>
+							<th>
+								Modell
+							</th>
+							<th>
+								<?php echo $lang['price']?>
+							</th>
+							<th colspan="2">
+								<?php echo $lang['qty']?>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+
+						$query = "SELECT * FROM products WHERE name LIKE '%iPad Mini%'";
 						$result = mysqli_query($conn, $query);
 							if(mysqli_num_rows($result) > 0) {
 								while($row = mysqli_fetch_array($result)) {

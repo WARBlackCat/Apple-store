@@ -169,7 +169,43 @@ p {
 		<a href="../Controller/deleteProducts.php"><button class="btn btn3 top"><?php echo $lang['delprod']?></button></a>		
 	</div>
 	<div class="content">
+		<h5><?php echo $lang['feed']; ?></h5>
+		<table>
+			<thead>
+				<tr>
+					<td>
+						<?php echo $lang['ratestar']?>
+					</td>
+					<td>
+						<?php echo $lang['feedback']?>
+					</td>
+					<td>
+						<?php echo $lang['date']?>
+					</td>
+				</tr>
+			</thead>
+			<thead>
+				<?php 
 
+					$query="SELECT * FROM feedback";
+    				$result=mysqli_query($conn,$query);
+
+    					while ($row=mysqli_fetch_array($result)) {
+    		 				echo "<tr>";
+					        echo "<td>";
+					        echo $row['Rate'];
+					        echo "</td>";
+					        echo "<td>";
+					        echo $row['Opinion'];
+					        echo "</td>";
+					        echo "<td>";
+					        echo $row['CDate'];
+					        echo "</td>";
+
+    					}
+				 ?>
+			</thead>
+		</table>
 	</div>
 </body>
 </html>
